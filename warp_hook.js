@@ -18,7 +18,7 @@ function hookBoringSSLByPattern(module) {
     console.log("[*] Start hooking on arch: "+arch);
 
     
-    var patter_log_secret = "53 45 52 56 45 52 5F 48 41 4E 44 53 48 41 4B 45 5F 54 52 41 46 46 49 43 5F 53 45 43 52 45 54 00";
+    var patter_log_secret = "FF 43 02 D1 FD 7B 05 A9 F8 5F 06 A9 F6 57 07 A9 F4 4F 08 A9 FD 43 01 91 58 D0 3B D5 08 17 40 F9 A8 83 1F F8 08 34 40 F9 08 11 41 F9 E8 0D 00 B4";
 
     hook_log_secret_by_pattern(moduleBase, moduleSize, patter_log_secret, "ssl_log_secret()"); 
 }
@@ -68,6 +68,7 @@ function hook_log_secret_by_pattern(moduleBase, moduleSize, pattern, pattern_nam
 
                             },
                             onLeave: function(retval) {
+                                console.log("[*] successfully hooked ssl_log_secret() on_leave");
                             }
                         });
                     }
